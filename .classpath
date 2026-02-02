@@ -1,5 +1,51 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
+package assignment2;
+import java.util.Scanner;
+public class Nim {
+	public static void main(String[]args){
+		Scanner input = new Scanner (System.in);
+		System.out.print("Enter the starting number of sticks:");
+		int sticks = input.nextInt();
+
+		boolean humanTurn = true;
+		int round 0;
+
+		while (sticks > 0){
+			System.out.println("Round" + round + ":" + sticks + " at start");
+			if (humanTurn){
+				int take;
+
+				do{
+					System.out.print("Human takes (1 or 2);");
+					take = input.nextInt();
+				} while (take < 1 || take > 2 take > sticks);
+				sticks -= take;
+				System.out.println("Human takes" + takes + ", so " + sticks + " remain");
+
+			} else {
+				int take;
+
+				if (sticks ==1){
+					take = 1;
+
+				} else{
+					take = (int)(Math.random()* 2) + 1;
+				}
+				sticks -= take;
+				System.out.println("Computer takes " + take + ", so" + sticks + "remain");
+
+			}
+			if (sticks == 0){
+				if (humanTurn){
+					System.out.println("You win!");
+
+				} else {
+					System.out.println("You lose!");
+				}
+				break;
+			}
+			humanTurn = !humanTurn;
+			round++;
+		}
+		input.close();
+	}
+}
